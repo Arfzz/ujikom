@@ -6,7 +6,7 @@ use App\Http\Controllers\FotoController;
 use App\Http\Controllers\KomenController;
 use App\Http\Controllers\LikeController;
 use Illuminate\Support\Facades\Auth;
-
+use App\Http\Middleware\RedirectIfNotAuthenticated;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,12 +40,17 @@ Route::controller(FotoController::class)->prefix('fotos')->name('foto.')->group(
     Route::get('/{id}/edit', 'edit')->name('edit');
     Route::put('/{id}', 'update')->name('update');
     Route::delete('/{id}', 'destroy')->name('destroy');
-});
-Route::controller(LikeController::class)->prefix('likes')->name('like.')->group(function () {
-    Route::post('/{id}', 'index')->name('index');
+});    
+    
+     
+
+Route::prefix('komens')->name('komen.')->group(function () {
+    Route::post('/{id}', [KomenController::class, 'store'])->middleware(RedirectIfNotAuthenticated::class)->name('store');
+    Route::delete('/{id}', [KomenController::class, 'destroy'])->middleware(RedirectIfNotAuthenticated::class)->name('destroy');
 });
 
-Route::controller(KomenController::class)->prefix('komens')->name('komen.')->group(function () {
-    Route::post('/{id}', 'store')->name('store');
-    Route::delete('/{id}', 'destroy')->name('destroy');
+Route::prefix('likes')->name('like.')->group(function () {
+    Route::post('/like/{id}', [LikeController::class, 'index'])->middleware(RedirectIfNotAuthenticated::class)->name('index');
 });
+ 
+ 
