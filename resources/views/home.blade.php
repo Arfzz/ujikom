@@ -7,7 +7,7 @@
     @auth
     <div class="mb-3">
         <a href="{{ route('foto.create') }}" class="btn btn-primary">
-            <i class="fas fa-plus"></i> Unggah Foto
+            <i class="fas fa-plus"></i> Unggah Foto Anda
         </a>
         
     </div>
