@@ -91,29 +91,39 @@ class FotoController extends Controller
     public function update(Request $request, string $id)
     {
         $foto = Foto::find($id);
-
+    
         $request->validate([
             'judul' => 'required',
             'deskripsi' => 'required',
             'album_id' => 'required',
+            'lokasi' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
-
+    
         $foto->user_id = Auth::user()->id;
         $foto->judul = $request->judul;
         $foto->deskripsi = $request->deskripsi;
         $foto->album_id = $request->album_id;
-
+    
+        // Check if a new image file is uploaded
         if ($request->hasFile('lokasi')) {
+            // Delete the previous image file if exists
+            if (Storage::disk('public')->exists($foto->lokasi)) {
+                Storage::disk('public')->delete($foto->lokasi);
+            }
+    
+            // Store the new image file
             $imagePath = Storage::disk('public')->put('images/', $request->file('lokasi'));
-
+    
+            // Check if storing the new image file is successful
             if (!Storage::disk('public')->exists($imagePath)) {
                 return back()->withInput()->withError('Gagal menyimpan foto, silahkan coba kembali!');
             }
-
+    
             $foto->lokasi = $imagePath;
         }
+    
         $foto->save();
-
+    
         return redirect()->route('home');
     }
 

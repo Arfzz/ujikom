@@ -31,7 +31,11 @@
                     <label for="">Description</label>
                     <textarea name="deskripsi" id="" cols="30" rows="10" class="form-control">{{'deskripsi', $foto->deskripsi}}</textarea>
                 </div>
-                
+                  {{-- <div class="mb-3">
+                    <label for="">Upload photo</label>
+                    <input type="file" name="lokasi" id="" cols="30" rows="10" value="{{ old('lokasi', $foto->lokasi) }}" class="form-control"> 
+                </div> --}}
+
             </div>
             <div class="card-footer text-end">
                 <a href="{{route('home')}}" class="btn btn-primary rounded-4" type="submit">kembali</a>
