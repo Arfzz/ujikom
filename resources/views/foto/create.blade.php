@@ -12,7 +12,7 @@
             </div>
             <div class="card-body">
                 <div class="mb-3">
-                    <label for="">pilih album</label>
+                    <label for="">Choose Album :</label>
                     <select class="form-select" name="album_id" aria-label="Default select example">
                         @foreach($album as $item)
                         <option value="{{$item->id}}">{{$item->nama}}</option>
@@ -20,12 +20,12 @@
                     </select>
                 </div>
                 <div class="mb-3">
-                    <label for="">judul</label>
+                    <label for="">Title</label>
                     <input type="text" name="judul" class="form-control">
                 </div>
 
                 <div class="mb-3">
-                    <label for="">Deskripsi</label>
+                    <label for="">Description</label>
                     <textarea name="deskripsi" id="" cols="30" rows="10" class="form-control"></textarea>
                 </div>
                 <div class="mb-3">

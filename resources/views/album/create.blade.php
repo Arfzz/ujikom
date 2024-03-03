@@ -13,12 +13,12 @@
             <div class="card-body">
                 @csrf
                 <div class="mb-3">
-                    <label for="">Judul</label>
+                    <label for="">Title</label>
                     <input type="text" name="nama" class="form-control">
                 </div>
 
                 <div class="mb-3">
-                    <label for="">Deskripsi</label>
+                    <label for="">Description</label>
                     <textarea name="deskripsi" id="" cols="30" rows="10" class="form-control"></textarea>
                 </div>
             </div>

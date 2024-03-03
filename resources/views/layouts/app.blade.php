@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.cssi=ho">
 
-    <title> Nepergram</title>
+    <title>Nepergram</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
@@ -56,8 +56,11 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('album.index') }}" type="button">
-                                        Tambah album
+                                    <a class="dropdown-item" href="{{ route('album.index') }}">
+                                        Tambah Album
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('foto.create') }}">
+                                        Tambah Foto
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

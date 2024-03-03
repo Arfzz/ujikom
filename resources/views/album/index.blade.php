@@ -4,14 +4,10 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="mb-3 justify-content-end">
-                <a href="{{ route('album.create') }}" class="btn btn-primary rounded-5">Tambah Album Baru +</a>
-                 
-            </div>
-            <div class="mb-3">
-                <a href="{{ route('foto.create') }}" class="btn btn-primary rounded-5">
-                    <i class="fa fa-plus"></i> Unggah Foto
-                </a>
+            <div class="mt-3 mb-3">
+                <h1>
+                    Album Anda
+                </h1>
             </div>
             @foreach($album as $item)
             <div class="card mb-3">

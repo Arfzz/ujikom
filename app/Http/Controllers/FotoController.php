@@ -103,16 +103,15 @@ class FotoController extends Controller
         $foto->deskripsi = $request->deskripsi;
         $foto->album_id = $request->album_id;
 
-        // if ($request->hasFile('lokasi')) {
-        //     $imagePath = Storage::disk('public')->put('images/', $request->file('lokasi'));
+        if ($request->hasFile('lokasi')) {
+            $imagePath = Storage::disk('public')->put('images/', $request->file('lokasi'));
 
-        //     if (!Storage::disk('public')->exists($imagePath)) {
-        //         return back()->withInput()->withError('Gagal menyimpan foto, silahkan coba kembali!');
-        //     }
+            if (!Storage::disk('public')->exists($imagePath)) {
+                return back()->withInput()->withError('Gagal menyimpan foto, silahkan coba kembali!');
+            }
 
-        //     $foto->lokasi = $imagePath;
-        // }
-
+            $foto->lokasi = $imagePath;
+        }
         $foto->save();
 
         return redirect()->route('home');

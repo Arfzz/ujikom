@@ -4,25 +4,29 @@
 <div class="container">
     <div class="row">
 
-    @auth
-    <div class="mb-3">
-        <a href="{{ route('foto.create') }}" class="btn btn-primary">
-            <i class="fas fa-plus"></i> Unggah Foto Anda
-        </a>
-        
+     <div class="mb-3">
+        @auth
+        <div class="card">
+            <div class="card-header justify-content-betweeen align-items-center">
+                Profil Pengguna
+            </div>
+            <div class="card-body">
+                <p>Nama Pengguna: {{ Auth::user()->username }}</p>
+                <p>Email: {{ Auth::user()->email }}</p>
+                <p>Alamat: {{ Auth::user()->alamat }}</p>
+            </div>
+            
+        </div>
+        @endauth
+     <div class="mt-3 mb-3">
+        <h1> Galeri Nepergram</h1>
+     </div>
     </div>
-    <div class="mb-3">
-        <a href="{{ route('album.index') }}" class="btn btn-primary">
-            Tambah album
-        </a>    
-    </div>
-    @endauth
-
     @if (!$foto || $foto->isEmpty())
     <h3 class="d-flex justify-content-center align-items-center vh-100">Foto Tidak Ada</h3>
     @else
         @foreach ($foto as $item)
-        <div class="col-md-6 col-lg-4 mb-4"> <!-- Perkecil ukuran kartu dengan menyesuaikan kelas kolom -->
+        <div class="col-md-6 col-lg-4 mb-4">  
             <div class="card rounded-3 shadow-sm">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <div class=" align-items-center">
